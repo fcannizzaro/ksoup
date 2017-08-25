@@ -24,7 +24,7 @@ allprojects {
 Add the dependency
 ```gradle
 dependencies {
-  compile 'com.github.fcannizzaro:ksoup:1.0.0'
+  compile 'com.github.fcannizzaro:ksoup:1.0.1'
 }
 ```
 
