@@ -1,5 +1,5 @@
 # ksoup
-Kotlin Wrapper for **Jsoup** using Pojo and Delegated Properties
+Kotlin Wrapper for **Jsoup** using *Pojo* and *Delegated Properties*
 
 [![](https://jitpack.io/v/fcannizzaro/ksoup.svg)](https://jitpack.io/#fcannizzaro/ksoup)
 [![Build Status](https://travis-ci.org/fcannizzaro/ksoup.svg?branch=master)](https://travis-ci.org/fcannizzaro/ksoup)
@@ -49,7 +49,7 @@ val packages: List<Package> = ksoup.fromList(html, Package())
 
 See [Sample Code](https://github.com/fcannizzaro/ksoup/tree/master/app/src/main/java/com/fcannizzaro/ksoup/sample)
 
-# POJO Model
+# Model
 
 ## IKsoup([query: String])
 
