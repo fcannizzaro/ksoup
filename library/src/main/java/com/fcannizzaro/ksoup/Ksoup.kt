@@ -3,6 +3,7 @@
 package com.fcannizzaro.ksoup
 
 import com.fcannizzaro.ksoup.util.extractList
+import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 
 /**
@@ -10,6 +11,8 @@ import org.jsoup.nodes.Element
  */
 
 class Ksoup(private var doc: Element) {
+
+    constructor(html: String) : this(Jsoup.parse(html))
 
     fun <T> from(instance: IKsoup): T {
 
