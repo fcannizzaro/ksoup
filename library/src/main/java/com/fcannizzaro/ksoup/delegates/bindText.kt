@@ -12,4 +12,6 @@ class bindText(private var query: String, private val trim: Boolean = true) {
 
     operator fun getValue(ref: IKsoup, property: KProperty<*>): String? = extractText(ref.element, query, trim)
 
+    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {}
+
 }

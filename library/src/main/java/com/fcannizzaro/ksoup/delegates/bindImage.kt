@@ -12,4 +12,6 @@ class bindImage(private var query: String) {
 
     operator fun getValue(ref: IKsoup, property: KProperty<*>): String? = extractImage(ref.element, query)
 
+    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {}
+
 }

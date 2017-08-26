@@ -27,4 +27,6 @@ class bindClass(private val instance: IKsoup, private val parent: IKsoup) {
 
     }
 
+    operator fun <T> setValue(ref: IKsoup, property: KProperty<*>, value: T?) {}
+
 }
