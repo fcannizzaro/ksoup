@@ -10,8 +10,23 @@ import kotlin.reflect.KProperty
 
 class bindText(private var query: String, private val trim: Boolean = true) {
 
-    operator fun getValue(ref: IKsoup, property: KProperty<*>): String? = extractText(ref.element, query, trim)
+    private var value: String? = null
+    private var assigned = false
 
-    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {}
+    operator fun getValue(ref: IKsoup, property: KProperty<*>): String? {
+
+        if (!assigned) {
+            assigned = true
+            value = extractText(ref.element, query, trim)
+        }
+
+        return value
+
+    }
+
+    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {
+        this.value = value
+        this.assigned = true
+    }
 
 }

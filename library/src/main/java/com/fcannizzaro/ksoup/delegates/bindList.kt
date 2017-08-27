@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.fcannizzaro.ksoup.delegates
 
 import com.fcannizzaro.ksoup.IKsoup
@@ -8,10 +10,25 @@ import kotlin.reflect.KProperty
  * Created by Francesco Cannizzaro (fcannizzaro).
  */
 
-class bindList(private var clazz: IKsoup) {
+class bindList(private val clazz: IKsoup) {
 
-    operator fun <T> getValue(ref: IKsoup, property: KProperty<*>): List<T> = extractList(ref.element, clazz)
+    private var value: List<Any>? = null
+    private var assigned = false
 
-    operator fun <T> setValue(ref: IKsoup, property: KProperty<*>, value: List<T>?) {}
+    operator fun <T> getValue(ref: IKsoup, property: KProperty<*>): List<T> {
+
+        if (!assigned) {
+            assigned = true
+            value = extractList(ref.element, clazz)
+        }
+
+        return value as List<T>
+
+    }
+
+    operator fun <T> setValue(ref: IKsoup, property: KProperty<*>, value: List<T>?) {
+        this.value = value as List<Any>
+        this.assigned = true
+    }
 
 }

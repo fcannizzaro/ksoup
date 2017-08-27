@@ -11,22 +11,36 @@ import kotlin.reflect.KProperty
 
 class bindClass(private val instance: IKsoup, private val parent: IKsoup) {
 
+    private var value: Any? = null
+    private var assigned = false
+
     operator fun <T> getValue(ref: IKsoup, property: KProperty<*>): T {
 
-        with(instance) {
+        if (!assigned) {
 
-            element = parent.element
+            assigned = true
 
-            if (query.isNotEmpty()) {
-                element = element.select(query).first()
+            with(instance) {
+
+                element = parent.element
+
+                if (query.isNotEmpty()) {
+                    element = element.select(query).first()
+                }
+
             }
+
+            value = instance
 
         }
 
-        return instance as T
+        return value as T
 
     }
 
-    operator fun <T> setValue(ref: IKsoup, property: KProperty<*>, value: T?) {}
+    operator fun <T> setValue(ref: IKsoup, property: KProperty<*>, value: T?) {
+        this.value = value
+        this.assigned = true
+    }
 
 }

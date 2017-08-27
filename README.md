@@ -4,7 +4,6 @@ Kotlin Wrapper for **Jsoup** using *Pojo* and *Delegated Properties*
 [![](https://jitpack.io/v/fcannizzaro/ksoup.svg)](https://jitpack.io/#fcannizzaro/ksoup)
 [![Build Status](https://travis-ci.org/fcannizzaro/ksoup.svg?branch=master)](https://travis-ci.org/fcannizzaro/ksoup)
 
-
 ![](https://raw.githubusercontent.com/fcannizzaro/ksoup/master/icon.png)
 
 # Gradle Dependency
@@ -24,7 +23,7 @@ allprojects {
 Add the dependency
 ```gradle
 dependencies {
-  compile 'com.github.fcannizzaro:ksoup:1.0.1'
+  compile 'com.github.fcannizzaro:ksoup:1.0.4'
 }
 ```
 

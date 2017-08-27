@@ -8,10 +8,25 @@ import kotlin.reflect.KProperty
  * Created by Francesco Cannizzaro (fcannizzaro).
  */
 
-class bindImage(private var query: String) {
+class bindImage(private val query: String, private val trim: Boolean = true) {
 
-    operator fun getValue(ref: IKsoup, property: KProperty<*>): String? = extractImage(ref.element, query)
+    private var value: String? = null
+    private var assigned = false
 
-    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {}
+    operator fun getValue(ref: IKsoup, property: KProperty<*>): String? {
+
+        if (!assigned) {
+            assigned = true
+            value = extractImage(ref.element, query, trim)
+        }
+
+        return value
+
+    }
+
+    operator fun setValue(ref: IKsoup, property: KProperty<*>, value: String?) {
+        this.value = value
+        this.assigned = true
+    }
 
 }

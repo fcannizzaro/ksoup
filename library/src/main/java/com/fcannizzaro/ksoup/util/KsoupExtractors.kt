@@ -40,10 +40,10 @@ fun <T> extractList(element: Element, clazz: IKsoup): List<T> {
 
 }
 
-fun extractImage(element: Element, query: String): String? {
-    return extractAttr(element, query, "src")
+fun extractImage(element: Element, query: String, trim: Boolean): String? {
+    return extractAttr(element, query, "src", trim)
 }
 
-fun extractLink(element: Element, query: String): String? {
-    return extractAttr(element, query, "href")
+fun extractLink(element: Element, query: String, trim: Boolean): String? {
+    return extractAttr(element, query, "href", trim)
 }
