@@ -15,9 +15,9 @@ class bindText(private var query: String, private val trim: Boolean = true) {
 
     operator fun getValue(ref: IKsoup, property: KProperty<*>): String? {
 
-        if (!assigned) {
+        if (!assigned && ref.element != null) {
             assigned = true
-            value = extractText(ref.element, query, trim)
+            value = extractText(ref.element!!, query, trim)
         }
 
         return value

@@ -17,9 +17,9 @@ class bindList(private val clazz: IKsoup) {
 
     operator fun <T> getValue(ref: IKsoup, property: KProperty<*>): List<T> {
 
-        if (!assigned) {
+        if (!assigned && ref.element != null) {
             assigned = true
-            value = extractList(ref.element, clazz)
+            value = extractList(ref.element!!, clazz)
         }
 
         return value as List<T>

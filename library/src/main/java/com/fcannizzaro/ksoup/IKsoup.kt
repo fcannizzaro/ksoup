@@ -9,7 +9,8 @@ import kotlin.properties.Delegates
 
 open class IKsoup(var query: String = "") {
 
-    var element by Delegates.notNull<Element>()
+    @Transient
+    var element: Element? = null
 
     open fun afterBind() {
         // called after element is bound.

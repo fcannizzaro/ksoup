@@ -15,9 +15,9 @@ class bindLink(private val query: String, private val trim: Boolean = true) {
 
     operator fun getValue(ref: IKsoup, property: KProperty<*>): String? {
 
-        if (!assigned) {
+        if (!assigned && ref.element != null) {
             assigned = true
-            value = extractLink(ref.element, query, trim)
+            value = extractLink(ref.element!!, query, trim)
         }
 
         return value

@@ -18,9 +18,9 @@ class bindAttr(private val query: String, private val attr: String, private val 
 
     operator fun getValue(ref: IKsoup, property: KProperty<*>): String? {
 
-        if (!assigned) {
+        if (!assigned && ref.element != null)  {
             assigned = true
-            value = extractAttr(ref.element, query, attr, trim)
+            value = extractAttr(ref.element!!, query, attr, trim)
         }
 
         return value

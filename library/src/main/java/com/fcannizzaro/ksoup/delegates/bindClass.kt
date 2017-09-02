@@ -24,8 +24,8 @@ class bindClass(private val instance: IKsoup, private val parent: IKsoup) {
 
                 element = parent.element
 
-                if (query.isNotEmpty()) {
-                    element = element.select(query).first()
+                if (query.isNotEmpty() && element != null) {
+                    element = element!!.select(query).first()
                 }
 
             }
